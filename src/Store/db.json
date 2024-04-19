@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "firstName": "Marco",
+      "lastName": "Rossi",
+      "email": "ulysses200915@varen8.com",
+      "password": "Edusogno123",
+      "id": "04b3"
+    },
+    {
+      "firstName": "Filippo",
+      "lastName": "D’Amelio",
+      "email": "qmonkey14@falixiao.com",
+      "password": "Edusogno?123",
+      "id": "c4f4"
+    },
+    {
+      "id": "39f0",
+      "firstName": "Stan",
+      "lastName": "Anaba",
+      "email": "geraldkhody@gmail.com",
+      "password": "asdfasdf"
+    }
+  ]
+}
