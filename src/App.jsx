@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
@@ -6,15 +6,20 @@ import Layout from './Component/Layout/Layout';
 import Reset from './Pages/Reset/Reset';
 import Profile from './Pages/Profile/Profile';
 import ChangePassword from './Pages/Profile/ChangePassword/ChangePassword';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const location = useLocation();
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  useEffect(()=> {
+    const storedLoggedIn = localStorage.getItem("isLoggedIn");
+    setIsLoggedIn(storedLoggedIn === "true");
+  },[location])
 
 
   return (
     <div>
-      <BrowserRouter>
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={isLoggedIn ? <Home /> : <Navigate to="/login" />} />
@@ -27,7 +32,6 @@ function App() {
             </Route>
           </Route>
         </Routes>
-      </BrowserRouter>
     </div>
   );
 }

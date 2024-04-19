@@ -4,13 +4,15 @@ import Button from '../../Component/Button/Button'
 import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
-    const navigate = useNavigate();
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    // const navigate = useNavigate();
+    // const isLoggedIn = localStorage.getItem("isLoggedIn");
 
-    if(!isLoggedIn == false){
-        navigate("/login");
-        return
-    }
+    console.log("Home");
+
+    // if(!isLoggedIn == false){
+    //     navigate("/login");
+    //     return
+    // }
 
   return (
     <div className='flex flex-col justify-center items-center h-[85vh] '>
