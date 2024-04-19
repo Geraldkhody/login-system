@@ -5,6 +5,7 @@ import Register from './Pages/Register/Register';
 import Layout from './Component/Layout/Layout';
 import Reset from './Pages/Reset/Reset';
 import Profile from './Pages/Profile/Profile';
+import ChangePassword from './Pages/Profile/ChangePassword/ChangePassword';
 
 function App() {
   return (
@@ -16,7 +17,10 @@ function App() {
             <Route path='login' element={<Login />} />
             <Route path='register' element={<Register />} />
             <Route path='reset' element={<Reset />} />
-            <Route path='profile' element={<Profile />} />
+            <Route path='profile'  >
+              <Route index element={<Profile />} />
+              <Route path='changepassword' element={<ChangePassword />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

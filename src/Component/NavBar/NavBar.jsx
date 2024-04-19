@@ -1,26 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import Card from "../Card/Card";
 
 const NavBar = () => {
   const navigate = useNavigate();
+  const location = useLocation(); 
   const [overlay, setOverlay] = useState(false);
-  // const [isLoggedIn, setIsLoggedIn] = useState(() => {
-  //   return localStorage.getItem("isLoggedIn") === "true";
-  // });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  let isLoggedIn
   useEffect(() => {
-    isLoggedIn = localStorage.getItem("isLoggedIn");
-    console.log(isLoggedIn)
-  },[isLoggedIn])
-
+    const storedLoggedIn = localStorage.getItem("isLoggedIn");
+    setIsLoggedIn(storedLoggedIn === "true");
+  }, [location]); 
 
   const handleLogout = () => {
+    // setIsLoggedIn(false);
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userData");
 
-    console.log("Logging out...");
 
     setOverlay(false);
     navigate("/login");
@@ -39,7 +36,7 @@ const NavBar = () => {
         className="w-[3.5rem] sm:w-[4rem] md:w-20 "
       />
 
-      {!isLoggedIn && (
+      {isLoggedIn && (
         <div className="w-8 h-8 rounded-full bg-slate-500 relative cursor-pointer ">
           <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-yellow-600 "></div>
           <ul className="bg-white border absolute top-[100%] p-[2px] ">
@@ -51,7 +48,7 @@ const NavBar = () => {
             </li>
           </ul>
         </div>
-      )} 
+      )}
 
       {overlay && (
         <div
