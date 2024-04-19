@@ -1,8 +1,17 @@
 import React from 'react'
 import Card from '../../Component/Card/Card'
 import Button from '../../Component/Button/Button'
+import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
+    const navigate = useNavigate();
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    if(!isLoggedIn == false){
+        navigate("/login");
+        return
+    }
+
   return (
     <div className='flex flex-col justify-center items-center h-[85vh] '>
         <h1 className='mb-8 font-bold text-3xl text-center text-[#134077] '>Ciao NOME ecco i tuoi eventi</h1>
