@@ -17,7 +17,6 @@ const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState();
   const [memberError, setMemberError] = useState("");
 
-  // localStorage.setItem("isLoggedIn", false)
 
   const loginHandler = async () => {
     const enteredEmail = emailRef.current.value;

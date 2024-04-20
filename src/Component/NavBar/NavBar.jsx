@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./NavBar.module.css"
-import { Link, useNavigate, useLocation, NavLink } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import Card from "../Card/Card";
 
 const NavBar = () => {
@@ -15,7 +15,6 @@ const NavBar = () => {
   }, [location]); 
 
   const handleLogout = () => {
-    // setIsLoggedIn(false);
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userData");
 
