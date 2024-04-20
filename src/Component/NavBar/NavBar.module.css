@@ -1,0 +1,7 @@
+.profile:hover ul {
+    display: block;
+}
+
+.profile ul {
+    display: none;
+}

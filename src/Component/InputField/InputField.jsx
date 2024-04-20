@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const InputField = React.forwardRef(( {type, label, id, placeholder, value, onChange}, ref) => {
+const InputField = React.forwardRef(( {type, label, id, disabled, placeholder, value, onChange}, ref) => {
   const [passwordType, setPasswordType] = useState(type);
   
 
@@ -11,6 +11,7 @@ const InputField = React.forwardRef(( {type, label, id, placeholder, value, onCh
         <input
           type={id === "password" ? passwordType : type}
           placeholder={placeholder}
+          disabled={disabled}
           className={`w-full outline-none border-b font-[500] sm:text-sm border-b-primary py-2 pr-8 ${
             id === "password" && "pr-14"
           } placeholder:text-[#ccc]  focus:border-b focus:border-b-primary focus:outline-none   `}
@@ -18,6 +19,7 @@ const InputField = React.forwardRef(( {type, label, id, placeholder, value, onCh
           value={value}
           onChange={onChange}
         />
+        
         {id === "password" && (
           <img
             src="/images/password eye.svg"

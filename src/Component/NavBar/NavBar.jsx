@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import style from "./NavBar.module.css"
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import Card from "../Card/Card";
 
@@ -37,9 +38,9 @@ const NavBar = () => {
       />
 
       {isLoggedIn && (
-        <div className="w-8 h-8 rounded-full bg-slate-500 relative cursor-pointer ">
+        <div className={`${style.profile} w-8 h-8 rounded-full bg-slate-500 relative cursor-pointer `}>
           <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-yellow-600 "></div>
-          <ul className="bg-white border absolute top-[100%] p-[2px] ">
+          <ul className="bg-white border absolute top-[97%] p-[2px] ">
             <li className="border-b py-1 px-3 hover:bg-[#eee] text-sm">
               <Link to="/profile">Profile</Link>
             </li>

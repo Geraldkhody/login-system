@@ -4,36 +4,24 @@ import Button from '../../Component/Button/Button'
 import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
-    // const navigate = useNavigate();
-    // const isLoggedIn = localStorage.getItem("isLoggedIn");
-
-    console.log("Home");
-
-    // if(!isLoggedIn == false){
-    //     navigate("/login");
-    //     return
-    // }
+    const events = [
+        {name: 'Nome evento', time: "15-10-2022 15:00"},
+        {name: 'Nome evento', time: "15-10-2022 15:00"},
+        {name: 'Nome evento', time: "15-10-2022 15:00"},
+    ]
 
   return (
-    <div className='flex flex-col justify-center items-center h-[85vh] '>
-        <h1 className='mb-8 font-bold text-3xl text-center text-[#134077] '>Ciao NOME ecco i tuoi eventi</h1>
-        <div className='flex justify-center gap-10'>
-            <Card width="280px">
-                <h1 className=' font-bold text-2xl text-[#231F20] '>Nome evento</h1>
-                <p className='font-[400] text-lg text-[#ccc] mb-4 '>15-10-2022 15:00</p>
-                <Button text='JOIN' />
-            </Card>
-            
-            <Card width="280px">
-                <h1 className=' font-bold text-2xl text-[#231F20] '>Nome evento</h1>
-                <p className='font-[400] text-lg text-[#ccc] mb-4 '>15-10-2022 15:00</p>
-                <Button text='JOIN' />
-            </Card>
-            <Card width="280px">
-                <h1 className=' font-bold text-2xl text-[#231F20] '>Nome evento</h1>
-                <p className='font-[400] text-lg text-[#ccc] mb-4 '>15-10-2022 15:00</p>
-                <Button text='JOIN' />
-            </Card>
+    <div className='flex flex-col justify-center items-center min-h-[100vh]  md:min-h-[70vh] '>
+        <h1 className='mb-6 sm:mb-8 font-bold text-2xl sm:text-3xl mt-8 text-center text-[#134077] '>Ciao NOME ecco i tuoi eventi</h1>
+        <div className='flex justify-center flex-wrap gap-10'>
+            {events.map(item => (
+                <Card className='w-full max-w-[290px]  sm:w-[250px] '>
+                    <h1 className=' font-bold text-2xl text-[#231F20] '>{item.name}</h1>
+                    <p className='font-[400] text-lg text-[#ccc] mb-4 '>{item.time}</p>
+                    <Button text='JOIN' clickFunction={() => {}} />
+                </Card>
+
+            ))}
 
         </div>
     </div>

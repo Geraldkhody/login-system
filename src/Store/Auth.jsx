@@ -11,7 +11,7 @@ export const isValidEmail = (email) => {
 
 
 export const userValidation = (resquestData, email, password) => {
-    if (resquestData[0].email === email || resquestData.password === password){
+    if (resquestData[0].email === email && resquestData[0].password === password){
         return true;
     }
     else {
