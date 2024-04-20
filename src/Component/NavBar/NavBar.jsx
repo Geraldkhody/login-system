@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import style from "./NavBar.module.css"
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation, NavLink } from "react-router-dom";
 import Card from "../Card/Card";
 
 const NavBar = () => {
@@ -31,11 +31,14 @@ const NavBar = () => {
 
   return (
     <div className=" bg-[#fff] w-[100%] h-14 sm:h-16 md:h-[4.5rem] px-8 sm:px-10 md:px-16 lg:px-24 xl:px-32 flex justify-between items-center rounded-b-xl sm:rounded-b-2xl border-b-2 border-b-blue-500 shadow-[0, 4, 18, -6] ">
-      <img
-        src="/images/Logo.svg"
-        alt="Logo"
-        className="w-[3.5rem] sm:w-[4rem] md:w-20 "
-      />
+      <Link to='/'>
+        <img
+          src="/images/Logo.svg"
+          alt="Logo"
+          className="w-[3.5rem] sm:w-[4rem] md:w-20 "
+        />
+
+      </Link>
 
       {isLoggedIn && (
         <div className={`${style.profile} w-8 h-8 rounded-full bg-slate-500 relative cursor-pointer `}>
