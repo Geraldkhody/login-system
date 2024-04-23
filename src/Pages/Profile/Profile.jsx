@@ -52,7 +52,7 @@ const Profile = () => {
         <h1 className="mb-4 font-[700] text-center text-3xl text-[#134077] ">
           Profilo
         </h1>
-        <Card className="w-[550px] ">
+        <Card className="max-w-[550px] ">
           <InputField
             label="Nome"
             type="text"

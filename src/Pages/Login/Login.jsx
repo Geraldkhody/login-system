@@ -68,7 +68,7 @@ const Login = () => {
         <h1 className="mb-4 font-bold text-3xl text-center text-[#134077]">
           Crea il tuo account
         </h1>
-        <Card className="w-[550px] ">
+        <Card className="max-w-[550px] ">
           <InputField
             label="Inserisci l’email"
             type="email"

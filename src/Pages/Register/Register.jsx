@@ -98,7 +98,7 @@ const Register = () => {
     <div className='flex justify-center items-center w-full h-[85vh] '>
       <div className='w-full max-w-[550px]'>
         <h1 className='mb-4 font-[700] text-center text-3xl text-[#134077] '>Hai già un account?</h1>
-        <Card className='w-[550px] '>
+        <Card className='max-w-[550px] '>
           <InputField label="Inserisci il nome" type="text" placeholder="Mario" ref={firstNameRef} />
           {firstNameError && <p className='text-red-500 text-sm mb-4'>{firstNameError}</p>}
 
