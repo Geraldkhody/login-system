@@ -3,6 +3,7 @@ import Card from "../../Component/Card/Card";
 import InputField from "../../Component/InputField/InputField";
 import Button from "../../Component/Button/Button";
 
+
 const Profile = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -53,6 +54,10 @@ const Profile = () => {
           Profilo
         </h1>
         <Card className="max-w-[550px] ">
+          <div className="w-[150px] h-[170px] rounded-xl shadow-md overflow-hidden">
+            <img src="/images/Profile.jpeg" alt="" />
+          </div>
+          <br />
           <InputField
             label="Nome"
             type="text"

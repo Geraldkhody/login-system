@@ -65,10 +65,10 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center h-[90%]">
       <div className="w-full max-w-[550px]">
-        <h1 className="mb-4 font-bold text-3xl text-center text-[#134077]">
+        <h1 className="mb-4  font-bold text-3xl text-center text-[#134077]">
           Crea il tuo account
         </h1>
-        <Card className="max-w-[550px] ">
+        <Card className="max-w-[550px] scaleanimate">
           <InputField
             label="Inserisci l’email"
             type="email"

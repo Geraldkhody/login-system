@@ -2,3 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+.scaleanimate{
+    animation-name: scaleanimate ;
+    animation-duration: 200ms ;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes scaleanimate {
+    from{
+        scale: 0;
+    }
+}
+.anidown{
+    animation-name: anidown ;
+    animation-duration: 200ms ;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes anidown {
+    from{
+        transform: translateY(-100%);
+    }
+}

@@ -6,8 +6,9 @@ import Card from "../Card/Card";
 const NavBar = () => {
   const navigate = useNavigate();
   const location = useLocation(); 
-  const [overlay, setOverlay] = useState(false);
+  const [isLogout, setIsLogout] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   useEffect(() => {
     const storedLoggedIn = localStorage.getItem("isLoggedIn");
@@ -19,17 +20,17 @@ const NavBar = () => {
     localStorage.removeItem("userData");
 
 
-    setOverlay(false);
+    setIsLogout(false);
     navigate("/login");
   };
 
   const handleCancel = () => {
     console.log("Logout canceled.");
-    setOverlay(false);
+    setIsLogout(false);
   };
 
   return (
-    <div className=" bg-[#fff] w-[100%] h-14 sm:h-16 md:h-[4.5rem] px-8 sm:px-10 md:px-16 lg:px-24 xl:px-32 flex justify-between items-center rounded-b-xl sm:rounded-b-2xl border-b-2 border-b-blue-500 shadow-[0, 4, 18, -6] ">
+    <div style={{boxShadow: '0 2px 18px -6px rgba(0, 87, 255, 1)'}} className=" bg-[#fff] w-[100%] h-14 sm:h-16 md:h-[4.5rem] px-8 sm:px-10 md:px-16 lg:px-24 xl:px-32 flex justify-between items-center rounded-b-xl sm:rounded-b-2xl border-b-2 ">
       <Link to='/'>
         <img
           src="/images/Logo.svg"
@@ -40,23 +41,33 @@ const NavBar = () => {
       </Link>
 
       {isLoggedIn && (
-        <div className={`${style.profile} w-8 h-8 rounded-full bg-slate-500 relative cursor-pointer `}>
-          <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-yellow-600 "></div>
-          <ul className="bg-white border absolute top-[97%] p-[2px] ">
-            <li className="border-b py-1 px-3 hover:bg-[#eee] text-sm">
-              <Link to="/profile">Profile</Link>
-            </li>
-            <li className="py-1 px-3 hover:bg-[#eee] text-sm ">
-              <button onClick={() => setOverlay(true)}>Logout</button>
-            </li>
-          </ul>
-        </div>
+        <section className="relative" style={{zIndex: 3}} >
+          <div onClick={()=>setShowProfileMenu(!showProfileMenu)} className={`${style.profile} w-8 h-8 rounded-full bg-slate-500 border-2 border-black relative cursor-pointer group`}>
+            <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-yellow-600 "></div>
+          </div>
+          {
+            showProfileMenu && <div className="absolute block overflow-hidden top-[1.8rem] right-0">
+            <ul className="bg-white flex flex-col anidown w-[200px] border m-auto p-[2px] ">
+              <Link to={`/profile`} className="border-b py-1 px-3 hover:bg-[#eee] text-sm h-[40px] flex items-center text-center">
+                <button>Profile</button>
+              </Link>
+              <li onClick={() => {
+                  setIsLogout(true)
+                  setShowProfileMenu(!showProfileMenu)
+                }} className="py-1 px-3 hover:bg-[#eee] cursor-pointer text-sm h-[40px] flex items-center text-center ">
+                <button className="">Logout</button>
+              </li>
+            </ul>
+          </div>
+          }
+          
+        </section>
       )}
 
-      {overlay && (
+      {isLogout && (
         <div
           className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] z-20"
-          onClick={() => setOverlay(false)}
+          onClick={() => setIsLogout(false)}
         >
           <Card className=" max-w-md">
             <p className="text-lg mb-4">Are you sure you want to log out?</p>
@@ -77,6 +88,11 @@ const NavBar = () => {
           </Card>
         </div>
       )}
+
+      {
+        showProfileMenu && <div style={{zIndex: 2}} onClick={()=>setShowProfileMenu(!showProfileMenu)} className="absolute top-0 left-0 right-0 bottom-0 bg-transparent"></div>
+      }
+      
     </div>
   );
 };
