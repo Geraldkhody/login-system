@@ -10,12 +10,12 @@
 
 @keyframes scaleanimate {
     from{
-        scale: 0;
+        scale: 0.6;
     }
 }
 .anidown{
     animation-name: anidown ;
-    animation-duration: 200ms ;
+    animation-duration: 300ms ;
     animation-timing-function: ease-in-out;
 }
 

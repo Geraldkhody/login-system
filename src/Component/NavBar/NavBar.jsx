@@ -43,7 +43,7 @@ const NavBar = () => {
 
       {isLoggedIn && (
         <section className="relative z-[3]"  >
-          <div onClick={()=>setShowProfileMenu(!showProfileMenu)} className={`${style.profile} w-8 h-8 rounded-full bg-slate-500 border-2 border-black relative cursor-pointer group `}>
+          <div onClick={( )=>setShowProfileMenu(!showProfileMenu)} className={`${style.profile} w-8 h-8 rounded-full bg-slate-500 border-2 border-black relative cursor-pointer `}>
             <div className="overflow-hidden w-full h-full rounded-full">
               <img className="w-full h-full object-cover " src="/images/Profile.jpeg" alt="profile image" />
             </div>
@@ -52,13 +52,13 @@ const NavBar = () => {
           {
             showProfileMenu && <div className="absolute block overflow-hidden top-[1.8rem] right-0">
             <ul className="bg-white flex flex-col anidown w-[200px] border m-auto p-[2px] ">
-              <Link to={`/profile`} className="border-b py-1 px-3 hover:bg-[#eee] text-sm h-[40px] flex items-center text-center">
+              <Link to={`/profile`} className="border-b py-1 px-3 hover:bg-[#eee] text-sm h-[40px] flex items-center text-center transition duration-300 hover:scale-[1.05]  ">
                 <button className="flex items-center"><img className="w-4 h-4 mr-2" src="/images/profile-icon.svg" alt="" /> Profile</button>
               </Link>
               <li onClick={() => {
                   setIsLogout(true)
                   setShowProfileMenu(!showProfileMenu)
-                }} className="py-1 px-3 hover:bg-[#eee] cursor-pointer text-sm h-[40px] flex items-center text-center ">
+                }} className="py-1 px-3 hover:bg-[#eee] cursor-pointer text-sm h-[40px] flex items-center text-center transition duration-300 hover:scale-[1.1]  ">
                 <button className="flex items-center"><img className="w-4 h-4 mr-2" src="/images/logout.svg" alt="" />  Logout</button>
               </li>
             </ul>
