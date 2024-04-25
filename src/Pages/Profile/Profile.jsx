@@ -11,7 +11,7 @@ const Profile = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [messageError, setMessageError] = useState("");
-  const [selectedPicture, setSelectedPicture] = useState("/images/Profile.jpeg");
+  const [profilePicture, setProfilePicture] = useState("/images/Profile.jpeg");
 
   const storedUserData = JSON.parse(localStorage.getItem("userData"));
 
@@ -55,8 +55,8 @@ const Profile = () => {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
-        dispatchStore(e.target.result)
-        setSelectedPicture(e.target.result);
+        dispatchStore(e.target.result)  
+        setProfilePicture(e.target.result);
       };
       reader.readAsDataURL(file);
     }
