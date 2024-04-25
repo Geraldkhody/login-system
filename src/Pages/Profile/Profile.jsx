@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "../../Component/Card/Card";
 import InputField from "../../Component/InputField/InputField";
 import Button from "../../Component/Button/Button";
+import { dispatchStore, store } from "../../Store/ChangeProfile";
 
 
 const Profile = () => {
@@ -54,6 +55,7 @@ const Profile = () => {
     if (file) {
       const reader = new FileReader();
       reader.onload = (e) => {
+        dispatchStore(e.target.result)
         setSelectedPicture(e.target.result);
       };
       reader.readAsDataURL(file);
@@ -73,7 +75,7 @@ const Profile = () => {
         </h1>
         <Card className="max-w-[550px] mb-6">
           <div className="relative w-[150px] h-[150px] rounded-xl shadow-md overflow-hidden group transition duration-500 ease-in-out">
-            <img className="w-full h-full object-cover" src={selectedPicture} alt="" />
+            <img className="w-full h-full object-cover" src={store.profilePicture} alt="" />
             <div className="absolute bottom-0 left-0 right-0 justify-center items-center w-full h-[25%] bg-[rgba(255,255,255,0.65)] cursor-pointer flex transition-transform duration-500 ease-in-out translate-y-full group-hover:translate-y-0 ">
               <img className="h-[80%]" src="/images/camera.svg" alt="" onClick={triggerFileInput} />
             </div>

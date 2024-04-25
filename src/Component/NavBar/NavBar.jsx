@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "./NavBar.module.css"
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import Card from "../Card/Card";
+import { store } from "../../Store/ChangeProfile";
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -43,9 +44,9 @@ const NavBar = () => {
 
       {isLoggedIn && (
         <section className="relative z-[3]"  >
-          <div onClick={( )=>setShowProfileMenu(!showProfileMenu)} className={`${style.profile} w-8 h-8 rounded-full bg-slate-500 border-2 border-black relative cursor-pointer `}>
+          <div onClick={( )=>setShowProfileMenu(!showProfileMenu)} className={`${style.profile} w-8 h-8 rounded-full bg-slate-500  border-black relative cursor-pointer `}>
             <div className="overflow-hidden w-full h-full rounded-full">
-              <img className="w-full h-full object-cover " src="/images/Profile.jpeg" alt="profile image" />
+              <img className="w-full h-full object-cover " src={store.profilePicture} alt="profile image" />
             </div>
             <div className="absolute z-10 top-0 right-0 w-2 h-2 rounded-full bg-yellow-600 "></div>
           </div>
