@@ -49,13 +49,13 @@ const Profile = () => {
 
   return (
     <div className="flex justify-center items-center w-full h-[85vh] ">
-      <div className="w-full max-w-[550px]">
+      <div className="w-full max-w-[550px] pt-32 ">
         <h1 className="mb-4 font-[700] text-center text-3xl text-[#134077] ">
           Profilo
         </h1>
-        <Card className="max-w-[550px] ">
-          <div className="w-[150px] h-[170px] rounded-xl shadow-md overflow-hidden">
-            <img src="/images/Profile.jpeg" alt="" />
+        <Card className="max-w-[550px] mb-6">
+          <div className="w-[150px] h-[150px] rounded-xl shadow-md overflow-hidden">
+            <img className="w-full h-full object-cover" src="/images/Profile.jpeg" alt="" />
           </div>
           <br />
           <InputField

@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 const Layout = () => {
   return (
     <Fragment>
-      <div className='absolute top-0 bottom-0 left-0 right-0 bg-[#e1efffc9] z-[-10] '>
+      <div className='fixed top-0 bottom-0 left-0 right-0 bg-[#D9E5F3] z-[-10] '>
         <img src="/images/Vector 5.svg" alt="" className='absolute bottom-10 w-full ' />
         <img src="/images/Vector 4.svg" alt="" className='absolute bottom-0 w-full  ' />
         <img src="/images/Vector 1.svg" alt="" className='absolute bottom-0 w-full ' />
@@ -17,9 +17,10 @@ const Layout = () => {
         {/* =====================   big Ellipse   ================== */}
         <img src="/images/Ellipse 13.svg" alt="" className='absolute top-[35%] sm:top-[40%] md:top-[47%] translate-y-[-50%] w-[12.5%]  ' />
       </div>
-      <div className="absolute top-0 bottom-0 left-0 right-0 bg-[rgba(0,0,0,0.03)] z-[-8]" ></div>
+      <div className="fixed top-0 bottom-0 left-0 right-0 bg-[rgba(0,0,0,0.03)] z-[-8]" ></div>
 
       <NavBar />
+      {/* <div className='min-h-14'></div> */}
       <main className='h-[80vh] px-6 sm:px-0 '>
         <Outlet />
       </main>

@@ -13,6 +13,7 @@ const NavBar = () => {
   useEffect(() => {
     const storedLoggedIn = localStorage.getItem("isLoggedIn");
     setIsLoggedIn(storedLoggedIn === "true");
+    setShowProfileMenu(false);
   }, [location]); 
 
   const handleLogout = () => {
@@ -41,21 +42,24 @@ const NavBar = () => {
       </Link>
 
       {isLoggedIn && (
-        <section className="relative" style={{zIndex: 3}} >
-          <div onClick={()=>setShowProfileMenu(!showProfileMenu)} className={`${style.profile} w-8 h-8 rounded-full bg-slate-500 border-2 border-black relative cursor-pointer group`}>
-            <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-yellow-600 "></div>
+        <section className="relative z-[3]"  >
+          <div onClick={()=>setShowProfileMenu(!showProfileMenu)} className={`${style.profile} w-8 h-8 rounded-full bg-slate-500 border-2 border-black relative cursor-pointer group `}>
+            <div className="overflow-hidden w-full h-full rounded-full">
+              <img className="w-full h-full object-cover " src="/images/Profile.jpeg" alt="profile image" />
+            </div>
+            <div className="absolute z-10 top-0 right-0 w-2 h-2 rounded-full bg-yellow-600 "></div>
           </div>
           {
             showProfileMenu && <div className="absolute block overflow-hidden top-[1.8rem] right-0">
             <ul className="bg-white flex flex-col anidown w-[200px] border m-auto p-[2px] ">
               <Link to={`/profile`} className="border-b py-1 px-3 hover:bg-[#eee] text-sm h-[40px] flex items-center text-center">
-                <button>Profile</button>
+                <button className="flex items-center"><img className="w-4 h-4 mr-2" src="/images/profile-icon.svg" alt="" /> Profile</button>
               </Link>
               <li onClick={() => {
                   setIsLogout(true)
                   setShowProfileMenu(!showProfileMenu)
                 }} className="py-1 px-3 hover:bg-[#eee] cursor-pointer text-sm h-[40px] flex items-center text-center ">
-                <button className="">Logout</button>
+                <button className="flex items-center"><img className="w-4 h-4 mr-2" src="/images/logout.svg" alt="" />  Logout</button>
               </li>
             </ul>
           </div>
@@ -66,7 +70,7 @@ const NavBar = () => {
 
       {isLogout && (
         <div
-          className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] z-20"
+          className="fixed top-0 bottom-0 left-0 right-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] z-20"
           onClick={() => setIsLogout(false)}
         >
           <Card className=" max-w-md">

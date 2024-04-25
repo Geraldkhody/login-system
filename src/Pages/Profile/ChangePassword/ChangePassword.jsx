@@ -43,6 +43,10 @@ const ChangePassword = () => {
       <div className='w-full max-w-[550px]'>
         <h1 className='mb-4 font-[700] text-center text-3xl text-[#134077] '>Change Password</h1>
         <Card className='max-w-[550px] '>
+          <div className='w-full h-[80px] round-xl flex justify-start  '>
+            <img src="/images/password-lock.svg" alt="password-lock" />
+          </div>
+          <br />
             <InputField label="Old Password" type="password" value={oldPassword} onChange={(e) => setOldPassword(e.target.value)} />
 
             <InputField label="New Password" type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />

@@ -5,16 +5,16 @@ const InputField = React.forwardRef(( {type, label, id, disabled, placeholder, v
   
 
   return (
-    <div className="mb-4 w-full ">
+    <div className="mb-4 w-full relative z-[0]">
       <label className="text-sm sm:text-xs block text-primary ">{label}</label>
-      <div className="relative">
+      <div className="relative z-[0]">
         <input
           type={id === "password" ? passwordType : type}
           placeholder={placeholder}
           disabled={disabled}
           className={`w-full outline-none border-b font-[500] sm:text-sm border-b-primary py-2 pr-8 ${
             id === "password" && "pr-14"
-          } placeholder:text-[#ccc]  focus:border-b focus:border-b-primary focus:outline-none   `}
+          } placeholder:text-[#ccc]  focus:border-b focus:border-b-primary focus:outline-none relative  `}
           ref={ref}
           value={value}
           onChange={onChange}
