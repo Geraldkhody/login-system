@@ -9,7 +9,7 @@ const Profile = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [sucessMessage, setSucessMessage] = useState("");
   const [messageError, setMessageError] = useState("");
   const [profilePicture, setProfilePicture] = useState("/images/Profile.jpeg");
 
@@ -41,7 +41,10 @@ const Profile = () => {
       );
 
       if (response.ok) {
-        setMessage("User data updated successfully.");
+        setSucessMessage("User data updated successfully.");
+        {setTimeout(() => {
+          setSucessMessage("")
+        }, 5000)}
       } else {
         setMessageError("Failed to update user data.");
       }
@@ -104,7 +107,10 @@ const Profile = () => {
             value={email}
           />
 
-          {message && <p className="text-green-500 text-sm mb-4">{message}</p>}
+          {sucessMessage && 
+            <p className="text-green-500 text-sm mb-4 transition opacity-100 before:opacity-0">{sucessMessage}</p>
+           }
+
           {messageError && (
             <p className="text-red-500 text-sm mb-4">{messageError}</p>
           )}
