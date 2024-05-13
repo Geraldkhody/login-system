@@ -10,7 +10,7 @@ const Profile = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [sucessMessage, setSucessMessage] = useState("");
-  const [messageError, setMessageError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [profilePicture, setProfilePicture] = useState("/images/Profile.jpeg");
 
   const storedUserData = JSON.parse(localStorage.getItem("userData"));
@@ -46,10 +46,10 @@ const Profile = () => {
           setSucessMessage("")
         }, 5000)}
       } else {
-        setMessageError("Failed to update user data.");
+        setErrorMessage("Failed to update user data.");
       }
     } catch (error) {
-      setMessageError("Error updating user data:", error);
+      setErrorMessage("Error updating user data:", error);
     }
   };
 
@@ -109,10 +109,10 @@ const Profile = () => {
 
           {sucessMessage && 
             <p className="text-green-500 text-sm mb-4 transition opacity-100 before:opacity-0">{sucessMessage}</p>
-           }
+          }
 
-          {messageError && (
-            <p className="text-red-500 text-sm mb-4">{messageError}</p>
+          {errorMessage && (
+            <p className="text-red-500 text-sm mb-4">{errorMessage}</p>
           )}
 
           <Button text="SALVA" clickFunction={updateUserData} />

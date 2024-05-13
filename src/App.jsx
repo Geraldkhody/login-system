@@ -7,7 +7,7 @@ import Reset from './Pages/Reset/Reset';
 import Profile from './Pages/Profile/Profile';
 import ChangePassword from './Pages/Profile/ChangePassword/ChangePassword';
 import { useEffect, useState } from 'react';
-import PrivateAuth from './Store/PrivateAuth';
+import { PrivateAuth, PrivateLoggedAuth } from './Store/PrivateAuth';
 
 function App() {
   // const location = useLocation();
@@ -25,7 +25,7 @@ function App() {
           <Route path='/' element={<Layout />}>
             {/* <Route index element={ <Home />} /> */}
             <Route index element={ <PrivateAuth><Home /> </PrivateAuth>  } />
-            <Route path='login' element={<Login />} />
+            <Route path='login' element={<PrivateLoggedAuth><Login /></PrivateLoggedAuth> } />
             <Route path='register' element={<Register />} />
             <Route path='reset' element={<Reset />} />
             <Route path='profile'  >

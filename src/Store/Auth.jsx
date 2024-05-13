@@ -4,11 +4,9 @@ export const Membership = async (email) => {
     return data;
 }
 
-
 export const isValidEmail = (email) => {
     return email.includes('@');
 };
-
 
 export const userValidation = (resquestData, email, password) => {
     if (resquestData[0].email === email && resquestData[0].password === password){

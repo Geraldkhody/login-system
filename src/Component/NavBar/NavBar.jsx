@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import style from "./NavBar.module.css"
+// import style from "./NavBar.module.css"
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import Card from "../Card/Card";
 import { store } from "../../Store/ChangeProfile";
@@ -32,7 +32,7 @@ const NavBar = () => {
   };
 
   return (
-    <div style={{boxShadow: '0 2px 18px -6px rgba(0, 87, 255, 1)'}} className=" bg-[#fff] w-[100%] h-14 sm:h-16 md:h-[4.5rem] px-8 sm:px-10 md:px-16 lg:px-24 xl:px-32 flex justify-between items-center rounded-b-xl sm:rounded-b-2xl border-b-2 ">
+    <div style={{boxShadow: '0 2px 18px -6px rgba(0, 87, 255, 1)'}} className="sticky top-0 z-30 bg-[#fff] w-[100%] h-14 sm:h-16 md:h-[4.5rem] px-8 sm:px-10 md:px-16 lg:px-24 xl:px-32 flex justify-between items-center rounded-b-xl sm:rounded-b-2xl border-b-2 ">
       <Link to='/'>
         <img
           src="/images/Logo.svg"
@@ -44,7 +44,7 @@ const NavBar = () => {
 
       {isLoggedIn && (
         <section className="relative z-[3]"  >
-          <div onClick={( )=>setShowProfileMenu(!showProfileMenu)} className={`${style.profile} w-8 h-8 rounded-full bg-slate-500  border-black relative cursor-pointer `}>
+          <div onClick={( )=>setShowProfileMenu(!showProfileMenu)} className={`w-8 h-8 rounded-full bg-slate-500 border-black relative cursor-pointer `}>
             <div className="overflow-hidden w-full h-full rounded-full">
               <img className="w-full h-full object-cover " src={store.profilePicture} alt="profile image" />
             </div>
@@ -60,7 +60,7 @@ const NavBar = () => {
                   setIsLogout(true)
                   setShowProfileMenu(!showProfileMenu)
                 }} className="py-1 px-3 hover:bg-[#eee] cursor-pointer text-sm h-[40px] flex items-center text-center transition duration-300 hover:scale-[1.1]  ">
-                <button className="flex items-center"><img className="w-4 h-4 mr-2" src="/images/logout.svg" alt="" />  Logout</button>
+                <button className="flex items-center"><img className="w-4 h-4 mr-2" src="/images/logout.svg" alt="" />Logout</button>
               </li>
             </ul>
           </div>

@@ -7,15 +7,12 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
-
   const emailRef = useRef();
   const passwordRef = useRef();
-
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
-
   const [isLoggedIn, setIsLoggedIn] = useState();
-  const [memberError, setMemberError] = useState("");
+  const [error, setError] = useState("");
 
 
   const loginHandler = async () => {
@@ -26,24 +23,21 @@ const Login = () => {
     setPasswordError("");
 
     if (enteredEmail.trim() === "" || !isValidEmail(enteredEmail)) {
-      console.log(isValidEmail(enteredEmail));
       setUsernameError("Please enter a valid email.");
       return;
     }
-    setUsernameError("");
 
     if (enteredPassword.trim() === "") {
       setPasswordError("Please enter a password.");
       return;
     }
-    setPasswordError("");
 
     try {
       const isMember = await Membership(enteredEmail);
       if (isMember.length !== 0) {
-        setMemberError("");
+        setError("");
         if (!userValidation(isMember, enteredEmail, enteredPassword)) {
-          console.log("Incorrect credentials");
+          setError("Incorrect credentials");
           return;
         }
 
@@ -54,7 +48,7 @@ const Login = () => {
         navigate("/");
       } else {
         setIsLoggedIn(false);
-        setMemberError("Account does not exist");
+        setError("Account does not exist");
       }
     } catch (error) {
       console.log(error);
@@ -89,8 +83,8 @@ const Login = () => {
           {passwordError && (
             <p className="text-red-500 text-sm mb-4">{passwordError}</p>
           )}
-          {memberError && (
-            <p className="text-red-500 text-sm mb-4">{memberError}</p>
+          {error && (
+            <p className="text-red-500 text-sm mb-4">{error}</p>
           )}
 
           <Button text="ACCEDI" clickFunction={loginHandler} />

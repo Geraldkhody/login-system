@@ -4,29 +4,49 @@ import Card from '../../../Component/Card/Card';
 import InputField from '../../../Component/InputField/InputField';
 
 const ChangePassword = () => {
-  const [oldPassword, setOldPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [message, setMessage] = useState('');
+  const [oldPassword, setOldPassword] = useState(null);
+  const [newPassword, setNewPassword] = useState(null);
+  const [confirmPassword, setConfirmPassword] = useState(null);
+  
+  const [sucessMessage, setSucessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const storedUserData = JSON.parse(localStorage.getItem('userData'));
 
+  
   const handleChangePassword = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/users/${storedUserData.id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          oldPassword: oldPassword,
-          password: newPassword,
-        }),
-      });
-      const data = await response.json();
-      setMessage(data.message);
+      setErrorMessage("");
+      if (oldPassword == null && newPassword == null && confirmPassword == null){
+        return;
+      }
+      else if(oldPassword == null || newPassword == null || confirmPassword == null){
+        setErrorMessage("Invalid Inputs")
+      }
+      else{
+        const response = await fetch(`http://localhost:5000/users/${storedUserData.id}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            oldPassword: oldPassword,
+            password: newPassword,
+          }),
+        });
+        if (response.ok) {
+        setSucessMessage("User data updated successfully.");
+        {setTimeout(() => {
+          setSucessMessage("")
+        }, 5000)}
+      } else {
+        setErrorMessage("Failed to update user data.");
+      }
+        const data = await response.json();
+        setErrorMessage(data.message);
+      }
     } catch (error) {
-      setMessage('Error updating password.');
+      setErrorMessage('Error updating password.');
     }
   };
 
@@ -34,7 +54,7 @@ const ChangePassword = () => {
     if (newPassword === confirmPassword) {
       handleChangePassword();
     } else {
-      setMessage('Passwords do not match.');
+      setErrorMessage('Passwords do not match.');
     }
   };
 
@@ -43,19 +63,24 @@ const ChangePassword = () => {
       <div className='w-full max-w-[550px]'>
         <h1 className='mb-4 font-[700] text-center text-3xl text-[#134077] '>Change Password</h1>
         <Card className='max-w-[550px] '>
-          <div className='w-full h-[80px] round-xl flex justify-start  '>
+          <div className='w-full h-[50px] round-xl flex justify-start  '>
             <img src="/images/password-lock.svg" alt="password-lock" />
           </div>
           <br />
-            <InputField label="Old Password" type="password" value={oldPassword} onChange={(e) => setOldPassword(e.target.value)} />
+            <InputField label="Vecchia Password" type="password" value={oldPassword} onChange={(e) => setOldPassword(e.target.value)} />
 
-            <InputField label="New Password" type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
+            <InputField label="Nuova Password" type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
 
-            <InputField label="Confirm Password" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+            <InputField label="Conferma Password" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
 
-            <Button text="Change Password" type="submit" clickFunction={handleSubmit} />
+            <div className='overflow-hidden'>
+            {sucessMessage && 
+              <p className="sucessmessageanime text-green-500 text-sm mb-4 transition opacity-100 before:opacity-0">{sucessMessage}</p>
+            }
+              {errorMessage && <p className="errormessageanime text-red-500 text-sm mb-4 overflow-hidden">{errorMessage}</p>}
 
-            {message && <p>{message}</p>}
+            </div>
+            <Button text="Cambia Password" type="submit" clickFunction={handleSubmit} />
         </Card>
       </div>
     </div>

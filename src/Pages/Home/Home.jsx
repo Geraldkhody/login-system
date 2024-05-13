@@ -17,17 +17,16 @@ const Home = () => {
         <h1 className='mb-6 sm:mb-8 font-bold text-2xl sm:text-3xl mt-8 text-center text-[#134077] '>Ciao {userData?.firstName} ecco i tuoi eventi</h1>
         <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-[2rem] w-full'>
 
-            {events.map(item => (
-                <section className='flex justify-center'>
+            {events.map((item, index) => (
+                <section className='flex justify-center' key={index}>
                     <Card className='w-full sm:h-[200px] lg:w-[349px] flex flex-col justify-between'>
                         <div className="flex flex-col">
                             <h1 className=' font-bold text-xl text-[#231F20] '>{item.name}</h1>
-                            <p className='font-[400] text-md text-[#ccc] '>{item.time}</p>
+                            <p className='font-normal text-md text-[#ccc] '>{item.time}</p>
                         </div>
-                        <Button text='JOIN' clickFunction={() => {}} />
+                        <Button text='JOIN' />
                     </Card>  
                 </section>
-
             ))}
 
         </div>

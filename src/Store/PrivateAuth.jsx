@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const PrivateAuth = ({ children }) => {
+export const PrivateAuth = ({ children }) => {
   const navigate = useNavigate();
   const isLoggedIn = localStorage.getItem("isLoggedIn");
   const location = useLocation();
@@ -14,4 +14,16 @@ const PrivateAuth = ({ children }) => {
   return children;
 };
 
-export default PrivateAuth;
+
+export const PrivateLoggedAuth = ({ children }) => {
+  const navigate = useNavigate();
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+  const location = useLocation();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/");
+    }
+  }, [location.pathname]);
+  return children;
+}
