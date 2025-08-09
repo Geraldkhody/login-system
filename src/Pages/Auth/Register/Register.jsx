@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import InputField from '../../Component/InputField/InputField';
-import Button from '../../Component/Button/Button';
-import Card from '../../Component/Card/Card';
-import {  Membership, isValidEmail } from '../../Store/Auth';
+import InputField from '../../../Component/Forms/InputField/InputField';
+import Button from '../../../Component/Common/Button/Button';
+import Card from '../../../Component/Common/Card/Card';
+import {  Membership, isValidEmail } from '../../../Services/Auth';
 
 const Register = () => {
   const navigate = useNavigate();

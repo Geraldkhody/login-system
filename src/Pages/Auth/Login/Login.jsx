@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
-import Card from "../../Component/Card/Card";
-import InputField from "../../Component/InputField/InputField";
-import Button from "../../Component/Button/Button";
-import { Membership, isValidEmail, userValidation } from "../../Store/Auth";
+import Card from "../../../Component/Common/Card/Card";
+import InputField from "../../../Component/Forms/InputField/InputField";
+import Button from "../../../Component/Common/Button/Button";
+import { Membership, isValidEmail, userValidation } from "../../../Services/Auth";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {

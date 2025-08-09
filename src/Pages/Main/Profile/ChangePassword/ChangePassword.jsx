@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Button from '../../../Component/Button/Button';
-import Card from '../../../Component/Card/Card';
-import InputField from '../../../Component/InputField/InputField';
+import Button from '../../../../Component/Common/Button/Button';
+import Card from '../../../../Component/Common/Card/Card';
+import InputField from '../../../../Component/Forms/InputField/InputField';
 
 const ChangePassword = () => {
   const [oldPassword, setOldPassword] = useState(null);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import style from "./NavBar.module.css"
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import Card from "../Card/Card";
-import { store } from "../../Store/ChangeProfile";
+import { store } from "../../../Store/ChangeProfile";
 
 const NavBar = () => {
   const navigate = useNavigate();

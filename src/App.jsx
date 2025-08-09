@@ -1,13 +1,12 @@
 import { BrowserRouter, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import Home from './Pages/Home/Home';
-import Login from './Pages/Login/Login';
-import Register from './Pages/Register/Register';
+import Home from './Pages/Main/Home/Home';
+import Login from './Pages/Auth/Login/Login';
+import Register from './Pages/Auth/Register/Register';
 import Layout from './Component/Layout/Layout';
-import Reset from './Pages/Reset/Reset';
-import Profile from './Pages/Profile/Profile';
-import ChangePassword from './Pages/Profile/ChangePassword/ChangePassword';
-import { useEffect, useState } from 'react';
-import { PrivateAuth, PrivateLoggedAuth } from './Store/PrivateAuth';
+import Reset from './Pages/Auth/Reset/Reset';
+import Profile from './Pages/Main/Profile/Profile';
+import ChangePassword from './Pages/Main/Profile/ChangePassword/ChangePassword';
+import { PrivateAuth, PrivateLoggedAuth } from './Component/Layout/PrivateAuth';
 
 function App() {
   // const location = useLocation();

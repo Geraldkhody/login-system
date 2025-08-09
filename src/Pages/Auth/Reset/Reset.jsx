@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
-import Card from '../../Component/Card/Card'
-import InputField from '../../Component/InputField/InputField'
-import Button from '../../Component/Button/Button'
+import Card from '../../../Component/Common/Card/Card'
+import InputField from '../../../Component/Forms/InputField/InputField'
+import Button from '../../../Component/Common/Button/Button'
 
 const Reset = () => {
   const emailRef = useRef();

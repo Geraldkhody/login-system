@@ -1,6 +1,6 @@
 import React from 'react'
-import Card from '../../Component/Card/Card'
-import Button from '../../Component/Button/Button'
+import Card from '../../../Component/Common/Card/Card'
+import Button from '../../../Component/Common/Button/Button'
 import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
